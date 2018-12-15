@@ -41,7 +41,8 @@
     <?xml version="1.0" encoding="UTF-8"?>
     <assembly>
         <!-- 可自定义，这里指定的是项目环境 -->
-        <id>${profileActive}</id>
+        <!-- spring-boot-assembly-local-1.0.RELEASE.tar.gz  -->
+        <id>${profileActive}-${project.version}</id>
     
         <!-- 打包的类型，如果有N个，将会打N个类型的包 -->
         <formats>
@@ -68,9 +69,9 @@
                 </includes>
             </fileSet>
     
-            <!-- 指定输出resources中的配置文件到config目录中 -->
+            <!-- 指定输出target/classes中的配置文件到config目录中 -->
             <fileSet>
-                <directory>${basedir}/src/main/resources</directory>
+                <directory>${basedir}/target/classes</directory>
                 <outputDirectory>config</outputDirectory>
                 <fileMode>0644</fileMode>
                 <includes>
@@ -93,7 +94,7 @@
     
             <!-- 将项目启动jar打包到boot目录中 -->
             <fileSet>
-                <directory>${project.build.directory}</directory>
+                <directory>${basedir}/target</directory>
                 <outputDirectory>boot</outputDirectory>
                 <fileMode>0755</fileMode>
                 <includes>
@@ -103,7 +104,7 @@
     
             <!-- 包含根目录下的文件 -->
             <fileSet>
-                <directory>/</directory>
+                <directory>${basedir}</directory>
                 <includes>
                     <include>NOTICE</include>
                     <include>LICENSE</include>
