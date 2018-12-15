@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /example
+  port: 8100
+
+spring:
+  application:
+    name: spring-boot-assembly
+  profiles:
+    active: local
+
+hello: Hello Local

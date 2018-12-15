@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /example
+  port: 8200
+
+spring:
+  application:
+    name: spring-boot-assembly
+  profiles:
+    active: dev
