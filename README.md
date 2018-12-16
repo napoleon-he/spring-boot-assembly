@@ -7,8 +7,10 @@
 > 5. bin目录中是启动，停止，重启服务命令
 > 6. 打包后的目录结构类似于tomcat/maven目录结构
 
-### GITHUB项目主页
-   [https://github.com/geekidea/spring-boot-assembly](https://github.com/geekidea/spring-boot-assembly)
+## 代码托管
+
+> **[Github](https://github.com/geekidea/spring-boot-assembly)** | **[Gitee](https://gitee.com/geekidea/spring-boot-assembly)**
+
 
 ### 主要插件
 1. maven-assembly-plugin
