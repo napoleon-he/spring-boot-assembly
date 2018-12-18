@@ -512,6 +512,51 @@ logs/spring-boot-assembly.log
         |-- spring-boot-assembly.log
         `-- spring-boot-assembly_startup.log
     
+#### FAQ
+##### Q: 项目打成tar包后，不能正常读取resource目录下的某些配置文件
+
+##### A:如果resource目录中还用到其它配置文件，需要在pom.xml和assembly.xml文件的resource中进行配置
+1. pom.xml中的resource默认配置
+> 把需要打包的文件添加到include中
+
+    <!-- 资源文件配置 -->
+    <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+            <include>application.yml</include>
+            <include>application-${profileActive}.yml</include>
+            <include>mapper/**/*.xml</include>
+            <include>static/**</include>
+            <include>templates/**</include>
+            <include>*.xml</include>
+            <include>*.properties</include>
+            <!-- xxx.keystore -->
+            <include>xxx.keystore</include>
+        </includes>
+    </resource>
+
+2. assembly.xml中的resource默认配置
+> 把需要打包的文件添加到include中
+
+    <!-- 指定输出target/classes中的配置文件到config目录中 -->
+    <fileSet>
+        <directory>${basedir}/target/classes</directory>
+        <outputDirectory>config</outputDirectory>
+        <fileMode>0644</fileMode>
+        <includes>
+            <include>application.yml</include>
+            <include>application-${profileActive}.yml</include>
+            <include>mapper/**/*.xml</include>
+            <include>static/**</include>
+            <include>templates/**</include>
+            <include>*.xml</include>
+            <include>*.properties</include>
+            <!-- xxx.keystore -->
+            <include>xxx.keystore</include>
+        </includes>
+    </fileSet>
+    
 ##### 参考：
 - https://docs.spring.io/spring-boot/docs/current/maven-plugin/
 - http://maven.apache.org/components/plugins/maven-assembly-plugin/usage.html
