@@ -44,8 +44,8 @@ LOG_BACK_DIR="${LOG_DIR}/back/"
 LOG_STARTUP_PATH="${LOG_DIR}/${APPLICATION}_startup.log"
 
 # 当前时间
-NOW=`date --date='0 days ago' "+%Y-%m-%d-%H-%M-%S"`
-NOW_PRETTY=`date --date='0 days ago' "+%Y-%m-%d %H:%M:%S"`
+NOW=`date +'%Y-%m-%m-%H-%M-%S'`
+NOW_PRETTY=`'date +%Y-%m-%m %H:%M:%S'`
 
 # 启动日志
 STARTUP_LOG="================================================ ${NOW_PRETTY} ================================================\n"
@@ -69,7 +69,7 @@ fi
 echo "" > ${LOG_PATH}
 
 # 如果项目启动日志不存在,则创建,否则追加
-echo ${STARTUP_LOG} >> ${LOG_STARTUP_PATH}
+echo "${STARTUP_LOG}" >> ${LOG_STARTUP_PATH}
 
 #==========================================================================================
 # JVM Configuration
